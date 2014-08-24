@@ -4,15 +4,40 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.BinaryOperator;
-import java.util.function.Function;
-import java.util.function.Supplier;
-import java.util.function.UnaryOperator;
+import java.util.function.*;
 
 import static java.util.Arrays.asList;
 import static org.junit.Assert.assertEquals;
 
 public class FunctionsTest extends TestBase {
+    @Test
+    public void testBiFunctionApply12() throws Exception {
+        Spy spy = new Spy();
+        mapPair(Functions.apply12(spy::transform2));
+        spy.checkConsumed(1, 2, 3, 4, 5, 6);
+    }
+
+    @Test
+    public void testBiFunctionApply21() throws Exception {
+        Spy spy = new Spy();
+        mapPair(Functions.apply21(spy::transform2));
+        spy.checkConsumed(2, 1, 4, 3, 6, 5);
+    }
+
+    @Test
+    public void testBiFunctionApply11() throws Exception {
+        Spy spy = new Spy();
+        mapPair(Functions.apply11(spy::transform2));
+        spy.checkConsumed(1, 1, 3, 3, 5, 5);
+    }
+
+    @Test
+    public void testBiFunctionApply22() throws Exception {
+        Spy spy = new Spy();
+        mapPair(Functions.apply22(spy::transform2));
+        spy.checkConsumed(2, 2, 4, 4, 6, 6);
+    }
+
     @Test
     public void testBiFunctionBind1() throws Exception {
         Spy spy = new Spy();
@@ -65,6 +90,14 @@ public class FunctionsTest extends TestBase {
     }
 
     @Test
+    public void testBinaryOperatorApply11() throws Exception {
+        Spy spy = new Spy();
+        BinaryOperator<String> operator = spy::operate2;
+        mapStringPair(Functions.apply11(operator));
+        spy.checkConsumed("1", "1", "3", "3", "5", "5");
+    }
+
+    @Test
     public void testUnaryOperatorBind12() throws Exception {
         Spy spy = new Spy();
         UnaryOperator<String> operator = spy::operate1;
@@ -76,6 +109,25 @@ public class FunctionsTest extends TestBase {
         List<String> results = new ArrayList<>();
         for (int i = 1; i <= LENGTH; ++i) {
             results.add(function.apply(i));
+        }
+        assertEquals(asList("-1", "-2", "-3"), results);
+    }
+
+    private void mapPair(BiFunction<Integer, Integer, String> function) {
+        List<String> results = new ArrayList<>();
+        for (int i = 1; i <= LENGTH; ++i) {
+            results.add(function.apply(i * 2 - 1, i * 2));
+        }
+        assertEquals(asList("-1", "-2", "-3"), results);
+    }
+
+    private void mapStringPair(BiFunction<String, String, String> function) {
+        List<String> results = new ArrayList<>();
+        for (int i = 1; i <= LENGTH; ++i) {
+            results.add(function.apply(
+                    Integer.toString(i * 2 - 1, 10),
+                    Integer.toString(i * 2, 10)
+            ));
         }
         assertEquals(asList("-1", "-2", "-3"), results);
     }

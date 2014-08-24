@@ -1,10 +1,28 @@
 package net.volune.functions;
 
-import java.util.function.*;
+import java.util.function.BiFunction;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
 public class Functions {
     //Not instantiable
     private Functions() {
+    }
+
+    public static <T, R> BiFunction<T, T, R> apply12(BiFunction<T, T, R> function) {
+        return function;
+    }
+
+    public static <T, R> BiFunction<T, T, R> apply21(BiFunction<T, T, R> function) {
+        return (arg1, arg2) -> function.apply(arg2, arg1);
+    }
+
+    public static <T, R> BiFunction<T, T, R> apply11(BiFunction<T, T, R> function) {
+        return (arg1, arg2) -> function.apply(arg1, arg1);
+    }
+
+    public static <T, R> BiFunction<T, T, R> apply22(BiFunction<T, T, R> function) {
+        return (arg1, arg2) -> function.apply(arg2, arg2);
     }
 
     public static <T, U, R, A1 extends T> Function<U, R> bind1(BiFunction<T, U, R> function, A1 arg1) {
