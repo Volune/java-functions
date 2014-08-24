@@ -3,12 +3,12 @@ package net.volune.functions;
 import org.junit.Test;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.function.BinaryOperator;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
+import static java.util.Arrays.asList;
 import static org.junit.Assert.assertEquals;
 
 public class FunctionsTest extends TestBase {
@@ -46,7 +46,7 @@ public class FunctionsTest extends TestBase {
         for (int i = 1; i <= LENGTH; ++i) {
             results.add(function.apply(i));
         }
-        assertEquals(Arrays.asList("-1", "-2", "-3"), results);
+        assertEquals(asList("-1", "-2", "-3"), results);
     }
 
     private void generate(Supplier<String> supplier) {
@@ -54,6 +54,6 @@ public class FunctionsTest extends TestBase {
         for (int i = 1; i <= LENGTH; ++i) {
             results.add(supplier.get());
         }
-        assertEquals(Arrays.asList("-1", "-2", "-3"), results);
+        assertEquals(asList("-1", "-2", "-3"), results);
     }
 }
