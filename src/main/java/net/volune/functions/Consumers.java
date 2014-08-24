@@ -12,9 +12,10 @@ public class Consumers {
     }
 
     /**
-     * Reorder arguments of the given method reference <code>arg1,arg2 -> arg1,arg2</code>.
-     *
+     * Reorder arguments of the given method reference <code>arg1,arg2 -&gt; arg1,arg2</code>.
+     * <p>
      * Does actually nothing because the arguments are still used in the same order.
+     *
      * @param consumer the method reference to be wrapped
      * @return the given consumer
      */
@@ -23,9 +24,10 @@ public class Consumers {
     }
 
     /**
-     * Reorder arguments of the given method reference <code>arg1,arg2 -> arg2,arg1</code>.
-     *
+     * Reorder arguments of the given method reference <code>arg1,arg2 -&gt; arg2,arg1</code>.
+     * <p>
      * Arguments are swapped.
+     *
      * @param consumer the method reference to be wrapped
      * @return a new method reference that calls the given one with rearranged arguments
      */
@@ -34,9 +36,10 @@ public class Consumers {
     }
 
     /**
-     * Reorder arguments of the given method reference <code>arg1,arg2 -> arg1,arg1</code>.
-     *
+     * Reorder arguments of the given method reference <code>arg1,arg2 -&gt; arg1,arg1</code>.
+     * <p>
      * The second argument is ignored.
+     *
      * @param consumer the method reference to be wrapped
      * @return a new method reference that calls the given one with rearranged arguments
      */
@@ -45,9 +48,10 @@ public class Consumers {
     }
 
     /**
-     * Reorder arguments of the given method reference <code>arg1,arg2 -> arg2,arg2</code>.
-     *
+     * Reorder arguments of the given method reference <code>arg1,arg2 -&gt; arg2,arg2</code>.
+     * <p>
      * The first argument is ignored.
+     *
      * @param consumer the method reference to be wrapped
      * @return a new method reference that calls the given one with rearranged arguments
      */

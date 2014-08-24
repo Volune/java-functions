@@ -1,6 +1,8 @@
 package net.volune.functions;
 
-import java.util.function.*;
+import java.util.function.BiPredicate;
+import java.util.function.BooleanSupplier;
+import java.util.function.Predicate;
 
 /**
  * Provides utility functions for method references that are intended to return a boolean.
@@ -11,9 +13,10 @@ public class Predicates {
     }
 
     /**
-     * Reorder arguments of the given method reference <code>arg1,arg2 -> arg1,arg2</code>.
-     *
+     * Reorder arguments of the given method reference <code>arg1,arg2 -&gt; arg1,arg2</code>.
+     * <p>
      * Does actually nothing because the arguments are still used in the same order.
+     *
      * @param predicate the method reference to be wrapped
      * @return the given consumer
      */
@@ -22,9 +25,10 @@ public class Predicates {
     }
 
     /**
-     * Reorder arguments of the given method reference <code>arg1,arg2 -> arg2,arg1</code>.
-     *
+     * Reorder arguments of the given method reference <code>arg1,arg2 -&gt; arg2,arg1</code>.
+     * <p>
      * Arguments are swapped
+     *
      * @param predicate the method reference to be wrapped
      * @return a new method reference that calls the given one with rearranged arguments
      */
@@ -33,9 +37,10 @@ public class Predicates {
     }
 
     /**
-     * Reorder arguments of the given method reference <code>arg1,arg2 -> arg1,arg1</code>.
-     *
+     * Reorder arguments of the given method reference <code>arg1,arg2 -&gt; arg1,arg1</code>.
+     * <p>
      * The second argument is ignored.
+     *
      * @param predicate the method reference to be wrapped
      * @return a new method reference that calls the given one with rearranged arguments
      */
@@ -44,9 +49,10 @@ public class Predicates {
     }
 
     /**
-     * Reorder arguments of the given method reference <code>arg1,arg2 -> arg2,arg2</code>.
-     *
+     * Reorder arguments of the given method reference <code>arg1,arg2 -&gt; arg2,arg2</code>.
+     * <p>
      * The first argument is ignored.
+     *
      * @param predicate the method reference to be wrapped
      * @return a new method reference that calls the given one with rearranged arguments
      */
