@@ -2,6 +2,9 @@ package net.volune.functions;
 
 import java.util.function.*;
 
+/**
+ * Provides utility functions for method references that are intended to return a boolean.
+ */
 public class Predicates {
     //Not instantiable
     private Predicates() {

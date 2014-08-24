@@ -4,6 +4,9 @@ import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
+/**
+ * Provides utility functions for method references that are intended to return an Object.
+ */
 public class Functions {
     //Not instantiable
     private Functions() {

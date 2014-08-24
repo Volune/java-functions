@@ -3,6 +3,9 @@ package net.volune.functions;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
+/**
+ * Provides utility functions for method references that are intended not to return anything.
+ */
 public class Consumers {
     //Not instantiable
     private Consumers() {
