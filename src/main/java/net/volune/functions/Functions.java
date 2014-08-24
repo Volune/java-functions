@@ -60,14 +60,35 @@ public class Functions {
         return (arg1, arg2) -> function.apply(arg2, arg2);
     }
 
+    /**
+     * Bind a given value as the first argument of a given method reference.
+     *
+     * @param function the method reference to be wrapped
+     * @param arg1     the value to bind as the first argument
+     * @return a new method reference that calls the given one with a bound argument
+     */
     public static <T, U, R, A1 extends T> Function<U, R> bind1(BiFunction<T, U, R> function, A1 arg1) {
         return (arg2) -> function.apply(arg1, arg2);
     }
 
+    /**
+     * Bind a given value as the second argument of a given method reference.
+     *
+     * @param function the method reference to be wrapped
+     * @param arg2     the value to second as the first argument
+     * @return a new method reference that calls the given one with a bound argument
+     */
     public static <T, U, R, A2 extends U> Function<T, R> bind2(BiFunction<T, U, R> function, A2 arg2) {
         return (arg1) -> function.apply(arg1, arg2);
     }
 
+    /**
+     * Bind a given value as the first argument of a given method reference.
+     *
+     * @param function the method first to be wrapped
+     * @param arg1     the value to second as the first argument
+     * @return a new method reference that calls the given one with a bound argument
+     */
     public static <T, R, A1 extends T> Supplier<R> bind1(Function<T, R> function, A1 arg1) {
         return () -> function.apply(arg1);
     }

@@ -59,10 +59,24 @@ public class Consumers {
         return (arg1, arg2) -> consumer.accept(arg2, arg2);
     }
 
+    /**
+     * Bind a given value as the first argument of a given method reference.
+     *
+     * @param consumer the method reference to be wrapped
+     * @param arg1     the value to bind as the first argument
+     * @return a new method reference that calls the given one with a bound argument
+     */
     public static <T, U, A1 extends T> Consumer<U> bind1(BiConsumer<T, U> consumer, A1 arg1) {
         return (arg2) -> consumer.accept(arg1, arg2);
     }
 
+    /**
+     * Bind a given value as the second argument of a given method reference.
+     *
+     * @param consumer the method reference to be wrapped
+     * @param arg2     the value to bind as the second argument
+     * @return a new method reference that calls the given one with a bound argument
+     */
     public static <T, U, A2 extends U> Consumer<T> bind2(BiConsumer<T, U> consumer, A2 arg2) {
         return (arg1) -> consumer.accept(arg1, arg2);
     }

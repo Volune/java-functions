@@ -60,14 +60,35 @@ public class Predicates {
         return (arg1, arg2) -> predicate.test(arg2, arg2);
     }
 
+    /**
+     * Bind a given value as the first argument of a given method reference.
+     *
+     * @param predicate the method reference to be wrapped
+     * @param arg1     the value to bind as the first argument
+     * @return a new method reference that calls the given one with a bound argument
+     */
     public static <T, U, A1 extends T> Predicate<U> bind1(BiPredicate<T, U> predicate, A1 arg1) {
         return (arg2) -> predicate.test(arg1, arg2);
     }
 
+    /**
+     * Bind a given value as the second argument of a given method reference.
+     *
+     * @param predicate the method reference to be wrapped
+     * @param arg2     the value to bind as the second argument
+     * @return a new method reference that calls the given one with a bound argument
+     */
     public static <T, U, A2 extends U> Predicate<T> bind2(BiPredicate<T, U> predicate, A2 arg2) {
         return (arg1) -> predicate.test(arg1, arg2);
     }
 
+    /**
+     * Bind a given value as the first argument of a given method reference.
+     *
+     * @param predicate the method reference to be wrapped
+     * @param arg1     the value to bind as the first argument
+     * @return a new method reference that calls the given one with a bound argument
+     */
     public static <T, A1 extends T> BooleanSupplier bind1(Predicate<T> predicate, A1 arg1) {
         return () -> predicate.test(arg1);
     }
