@@ -9,6 +9,7 @@ import static org.junit.Assert.assertEquals;
 public class Spy {
     private List<Object> consumed = new ArrayList<>();
     private int resultGenerator = -1;
+    private boolean booleanResultGenerator = false;
 
     public void consume(Number a1, Number a2) {
         consumed.add(a1);
@@ -25,6 +26,14 @@ public class Spy {
         consumed.add(a1);
         consumed.add(a2);
         return Integer.toString(resultGenerator--, 10);
+    }
+
+    public boolean test(Number a1, Number a2) {
+        consumed.add(a1);
+        consumed.add(a2);
+        boolean result = booleanResultGenerator;
+        booleanResultGenerator = !booleanResultGenerator;
+        return result;
     }
 
     public void checkConsumed(Object... expected) {
