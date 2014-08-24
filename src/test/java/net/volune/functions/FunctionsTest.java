@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.function.BinaryOperator;
 import java.util.function.Function;
 import java.util.function.Supplier;
+import java.util.function.UnaryOperator;
 
 import static java.util.Arrays.asList;
 import static org.junit.Assert.assertEquals;
@@ -34,18 +35,26 @@ public class FunctionsTest extends TestBase {
     }
 
     @Test
+    public void testFunctionBind1() throws Exception {
+        Spy spy = new Spy();
+        generate(Functions.bind1(spy::transform1, 7));
+        spy.checkConsumed(7, 7, 7);
+    }
+
+    @Test
     public void testBinaryOperatorBind12() throws Exception {
         Spy spy = new Spy();
-        BinaryOperator<String> operator = spy::operate;
+        BinaryOperator<String> operator = spy::operate2;
         generate(Functions.bind12(operator, "a", "b"));
         spy.checkConsumed("a", "b", "a", "b", "a", "b");
     }
 
     @Test
-    public void testFunctionBind1() throws Exception {
+    public void testUnaryOperatorBind12() throws Exception {
         Spy spy = new Spy();
-        generate(Functions.bind1(spy::transform1, 7));
-        spy.checkConsumed(7, 7, 7);
+        UnaryOperator<String> operator = spy::operate1;
+        generate(Functions.bind1(operator, "c"));
+        spy.checkConsumed("c", "c", "c");
     }
 
     private void map(Function<Integer, String> function) {

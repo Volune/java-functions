@@ -16,7 +16,12 @@ public class Spy {
         consumed.add(a2);
     }
 
-    public String operate(String a1, String a2) {
+    public String operate1(String a1) {
+        consumed.add(a1);
+        return Integer.toString(resultGenerator--, 10);
+    }
+
+    public String operate2(String a1, String a2) {
         consumed.add(a1);
         consumed.add(a2);
         return Integer.toString(resultGenerator--, 10);
