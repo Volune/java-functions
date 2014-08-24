@@ -25,7 +25,7 @@ public class Consumers {
     /**
      * Reorder arguments of the given method reference <code>arg1,arg2 -> arg2,arg1</code>.
      *
-     * Arguments are swapped
+     * Arguments are swapped.
      * @param consumer the method reference to be wrapped
      * @return a new method reference that calls the given one with rearranged arguments
      */
@@ -33,10 +33,24 @@ public class Consumers {
         return (arg1, arg2) -> consumer.accept(arg2, arg1);
     }
 
+    /**
+     * Reorder arguments of the given method reference <code>arg1,arg2 -> arg1,arg1</code>.
+     *
+     * The second argument is ignored.
+     * @param consumer the method reference to be wrapped
+     * @return a new method reference that calls the given one with rearranged arguments
+     */
     public static <T> BiConsumer<T, T> apply11(BiConsumer<T, T> consumer) {
         return (arg1, arg2) -> consumer.accept(arg1, arg1);
     }
 
+    /**
+     * Reorder arguments of the given method reference <code>arg1,arg2 -> arg2,arg2</code>.
+     *
+     * The first argument is ignored.
+     * @param consumer the method reference to be wrapped
+     * @return a new method reference that calls the given one with rearranged arguments
+     */
     public static <T> BiConsumer<T, T> apply22(BiConsumer<T, T> consumer) {
         return (arg1, arg2) -> consumer.accept(arg2, arg2);
     }

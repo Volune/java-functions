@@ -32,10 +32,24 @@ public class Predicates {
         return (arg1, arg2) -> predicate.test(arg2, arg1);
     }
 
+    /**
+     * Reorder arguments of the given method reference <code>arg1,arg2 -> arg1,arg1</code>.
+     *
+     * The second argument is ignored.
+     * @param predicate the method reference to be wrapped
+     * @return a new method reference that calls the given one with rearranged arguments
+     */
     public static <T> BiPredicate<T, T> apply11(BiPredicate<T, T> predicate) {
         return (arg1, arg2) -> predicate.test(arg1, arg1);
     }
 
+    /**
+     * Reorder arguments of the given method reference <code>arg1,arg2 -> arg2,arg2</code>.
+     *
+     * The first argument is ignored.
+     * @param predicate the method reference to be wrapped
+     * @return a new method reference that calls the given one with rearranged arguments
+     */
     public static <T> BiPredicate<T, T> apply22(BiPredicate<T, T> predicate) {
         return (arg1, arg2) -> predicate.test(arg2, arg2);
     }

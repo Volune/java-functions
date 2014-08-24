@@ -34,10 +34,24 @@ public class Functions {
         return (arg1, arg2) -> function.apply(arg2, arg1);
     }
 
+    /**
+     * Reorder arguments of the given method reference <code>arg1,arg2 -> arg1,arg1</code>.
+     *
+     * The second argument is ignored.
+     * @param function the method reference to be wrapped
+     * @return a new method reference that calls the given one with rearranged arguments
+     */
     public static <T, R> BiFunction<T, T, R> apply11(BiFunction<T, T, R> function) {
         return (arg1, arg2) -> function.apply(arg1, arg1);
     }
 
+    /**
+     * Reorder arguments of the given method reference <code>arg1,arg2 -> arg2,arg2</code>.
+     *
+     * The first argument is ignored.
+     * @param function the method reference to be wrapped
+     * @return a new method reference that calls the given one with rearranged arguments
+     */
     public static <T, R> BiFunction<T, T, R> apply22(BiFunction<T, T, R> function) {
         return (arg1, arg2) -> function.apply(arg2, arg2);
     }
