@@ -7,6 +7,22 @@ public class Predicates {
     private Predicates() {
     }
 
+    public static <T> BiPredicate<T, T> apply12(BiPredicate<T, T> function) {
+        return function;
+    }
+
+    public static <T> BiPredicate<T, T> apply21(BiPredicate<T, T> function) {
+        return (arg1, arg2) -> function.test(arg2, arg1);
+    }
+
+    public static <T> BiPredicate<T, T> apply11(BiPredicate<T, T> function) {
+        return (arg1, arg2) -> function.test(arg1, arg1);
+    }
+
+    public static <T> BiPredicate<T, T> apply22(BiPredicate<T, T> function) {
+        return (arg1, arg2) -> function.test(arg2, arg2);
+    }
+
     public static <T, U, A1 extends T> Predicate<U> bind1(BiPredicate<T, U> predicate, A1 arg1) {
         return (arg2) -> predicate.test(arg1, arg2);
     }
