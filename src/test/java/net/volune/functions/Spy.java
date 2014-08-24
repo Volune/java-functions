@@ -22,7 +22,12 @@ public class Spy {
         return Integer.toString(resultGenerator--, 10);
     }
 
-    public String transform(Number a1, Number a2) {
+    public String transform1(Number a1) {
+        consumed.add(a1);
+        return Integer.toString(resultGenerator--, 10);
+    }
+
+    public String transform2(Number a1, Number a2) {
         consumed.add(a1);
         consumed.add(a2);
         return Integer.toString(resultGenerator--, 10);

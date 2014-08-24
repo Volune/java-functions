@@ -15,21 +15,21 @@ public class FunctionsTest extends TestBase {
     @Test
     public void testBiFunctionBind1() throws Exception {
         Spy spy = new Spy();
-        map(Functions.bind1(spy::transform, 0));
+        map(Functions.bind1(spy::transform2, 0));
         spy.checkConsumed(0, 1, 0, 2, 0, 3);
     }
 
     @Test
     public void testBiFunctionBind2() throws Exception {
         Spy spy = new Spy();
-        map(Functions.bind2(spy::transform, 0));
+        map(Functions.bind2(spy::transform2, 0));
         spy.checkConsumed(1, 0, 2, 0, 3, 0);
     }
 
     @Test
     public void testBiFunctionBind12() throws Exception {
         Spy spy = new Spy();
-        generate(Functions.bind12(spy::transform, 8, 9));
+        generate(Functions.bind12(spy::transform2, 8, 9));
         spy.checkConsumed(8, 9, 8, 9, 8, 9);
     }
 
@@ -39,6 +39,13 @@ public class FunctionsTest extends TestBase {
         BinaryOperator<String> operator = spy::operate;
         generate(Functions.bind12(operator, "a", "b"));
         spy.checkConsumed("a", "b", "a", "b", "a", "b");
+    }
+
+    @Test
+    public void testFunctionBind1() throws Exception {
+        Spy spy = new Spy();
+        generate(Functions.bind1(spy::transform1, 7));
+        spy.checkConsumed(7, 7, 7);
     }
 
     private void map(Function<Integer, String> function) {
