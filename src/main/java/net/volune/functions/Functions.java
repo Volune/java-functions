@@ -12,4 +12,8 @@ public class Functions {
         return (arg2) -> consumer.accept(arg1, arg2);
     }
 
+    public static <T, U> Consumer<? super T> bind2(BiConsumer<? super T, ? super U> consumer, U arg2) {
+        return (arg1) -> consumer.accept(arg1, arg2);
+    }
+
 }
