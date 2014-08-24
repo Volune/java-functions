@@ -3,9 +3,9 @@ package net.volune.functions;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
-public class Functions {
+public class Consumers {
     //Not instantiable
-    private Functions() {
+    private Consumers() {
     }
 
     public static <T, U> Consumer<? super U> bind1(BiConsumer<? super T, ? super U> consumer, T arg1) {
