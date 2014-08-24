@@ -11,6 +11,13 @@ public class Consumers {
     private Consumers() {
     }
 
+    /**
+     * Reorder arguments of the given method reference <code>arg1,arg2 -> arg1,arg2</code>.
+     *
+     * Does actually nothing because the arguments are still used in the same order.
+     * @param consumer the method reference to be wrapped
+     * @return the given consumer
+     */
     public static <T> BiConsumer<T, T> apply12(BiConsumer<T, T> consumer) {
         return consumer;
     }

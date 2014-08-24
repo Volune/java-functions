@@ -10,6 +10,13 @@ public class Predicates {
     private Predicates() {
     }
 
+    /**
+     * Reorder arguments of the given method reference <code>arg1,arg2 -> arg1,arg2</code>.
+     *
+     * Does actually nothing because the arguments are still used in the same order.
+     * @param predicate the method reference to be wrapped
+     * @return the given consumer
+     */
     public static <T> BiPredicate<T, T> apply12(BiPredicate<T, T> predicate) {
         return predicate;
     }
