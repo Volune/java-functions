@@ -23,6 +23,13 @@ public class Functions {
         return function;
     }
 
+    /**
+     * Reorder arguments of the given method reference <code>arg1,arg2 -> arg2,arg1</code>.
+     *
+     * Arguments are swapped
+     * @param function the method reference to be wrapped
+     * @return a new method reference that calls the given one with rearranged arguments
+     */
     public static <T, R> BiFunction<T, T, R> apply21(BiFunction<T, T, R> function) {
         return (arg1, arg2) -> function.apply(arg2, arg1);
     }

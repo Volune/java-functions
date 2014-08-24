@@ -21,6 +21,13 @@ public class Predicates {
         return predicate;
     }
 
+    /**
+     * Reorder arguments of the given method reference <code>arg1,arg2 -> arg2,arg1</code>.
+     *
+     * Arguments are swapped
+     * @param predicate the method reference to be wrapped
+     * @return a new method reference that calls the given one with rearranged arguments
+     */
     public static <T> BiPredicate<T, T> apply21(BiPredicate<T, T> predicate) {
         return (arg1, arg2) -> predicate.test(arg2, arg1);
     }
