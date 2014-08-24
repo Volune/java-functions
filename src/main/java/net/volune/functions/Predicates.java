@@ -15,6 +15,10 @@ public class Predicates {
         return (arg1) -> predicate.test(arg1, arg2);
     }
 
+    public static <T, R, A1 extends T> BooleanSupplier bind1(Predicate<T> predicate, A1 arg1) {
+        return () -> predicate.test(arg1);
+    }
+
     public static <T, U, R, A1 extends T, A2 extends U> BooleanSupplier bind12(BiPredicate<T, U> predicate, A1 arg1, A2 arg2) {
         return () -> predicate.test(arg1, arg2);
     }

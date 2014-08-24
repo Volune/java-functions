@@ -33,7 +33,14 @@ public class Spy {
         return Integer.toString(resultGenerator--, 10);
     }
 
-    public boolean test(Number a1, Number a2) {
+    public boolean test1(Number a1) {
+        consumed.add(a1);
+        boolean result = booleanResultGenerator;
+        booleanResultGenerator = !booleanResultGenerator;
+        return result;
+    }
+
+    public boolean test2(Number a1, Number a2) {
         consumed.add(a1);
         consumed.add(a2);
         boolean result = booleanResultGenerator;

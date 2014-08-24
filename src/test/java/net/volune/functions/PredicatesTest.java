@@ -14,22 +14,29 @@ public class PredicatesTest extends TestBase {
     @Test
     public void testBiPredicateBind1() throws Exception {
         Spy spy = new Spy();
-        map(Predicates.bind1(spy::test, 0));
+        map(Predicates.bind1(spy::test2, 0));
         spy.checkConsumed(0, 1, 0, 2, 0, 3);
     }
 
     @Test
     public void testBiPredicateBind2() throws Exception {
         Spy spy = new Spy();
-        map(Predicates.bind2(spy::test, 0));
+        map(Predicates.bind2(spy::test2, 0));
         spy.checkConsumed(1, 0, 2, 0, 3, 0);
     }
 
     @Test
     public void testBiPredicateBind12() throws Exception {
         Spy spy = new Spy();
-        generate(Predicates.bind12(spy::test, 8, 9));
+        generate(Predicates.bind12(spy::test2, 8, 9));
         spy.checkConsumed(8, 9, 8, 9, 8, 9);
+    }
+
+    @Test
+    public void testPredicateBind1() throws Exception {
+        Spy spy = new Spy();
+        generate(Predicates.bind1(spy::test1, 7));
+        spy.checkConsumed(7, 7, 7);
     }
 
     private void map(Predicate<Integer> predicate) {
