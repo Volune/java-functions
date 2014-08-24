@@ -35,6 +35,13 @@ public class FunctionsTest extends TestBase {
     }
 
     @Test
+    public void testBiFunctionBind11() throws Exception {
+        Spy spy = new Spy();
+        generate(Functions.bind11(spy::transform2, 7));
+        spy.checkConsumed(7, 7, 7, 7, 7, 7);
+    }
+
+    @Test
     public void testFunctionBind1() throws Exception {
         Spy spy = new Spy();
         generate(Functions.bind1(spy::transform1, 7));
@@ -47,6 +54,14 @@ public class FunctionsTest extends TestBase {
         BinaryOperator<String> operator = spy::operate2;
         generate(Functions.bind12(operator, "a", "b"));
         spy.checkConsumed("a", "b", "a", "b", "a", "b");
+    }
+
+    @Test
+    public void testBinaryOperatorBind11() throws Exception {
+        Spy spy = new Spy();
+        BinaryOperator<String> operator = spy::operate2;
+        generate(Functions.bind11(operator, "c"));
+        spy.checkConsumed("c", "c", "c", "c", "c", "c");
     }
 
     @Test

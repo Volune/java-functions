@@ -33,6 +33,13 @@ public class PredicatesTest extends TestBase {
     }
 
     @Test
+    public void testBiPredicateBind11() throws Exception {
+        Spy spy = new Spy();
+        generate(Predicates.bind11(spy::test2, 7));
+        spy.checkConsumed(7, 7, 7, 7, 7, 7);
+    }
+
+    @Test
     public void testPredicateBind1() throws Exception {
         Spy spy = new Spy();
         generate(Predicates.bind1(spy::test1, 7));

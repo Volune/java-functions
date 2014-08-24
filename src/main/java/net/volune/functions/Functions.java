@@ -19,6 +19,10 @@ public class Functions {
         return () -> function.apply(arg1);
     }
 
+    public static <A, R> Supplier<R> bind11(BiFunction<? super A, ? super A, R> function, A arg) {
+        return () -> function.apply(arg, arg);
+    }
+
     public static <T, U, R, A1 extends T, A2 extends U> Supplier<R> bind12(BiFunction<T, U, R> function, A1 arg1, A2 arg2) {
         return () -> function.apply(arg1, arg2);
     }
