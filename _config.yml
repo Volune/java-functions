@@ -16,6 +16,8 @@ author :
   github : Volune
   #twitter : username
   #feedburner : feedname
+project :
+  github : Volune/java-functions
 
 # The production_url is only used when full-domain names are needed
 # such as sitemap.txt 
