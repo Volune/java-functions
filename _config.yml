@@ -75,6 +75,7 @@ JB :
   #atom_path : /atom.xml
   #rss_path : /rss.xml
   apidocs_path : /apidocs/index.html
+  download_path : /download.html
 
   # Settings for comments helper
   # Set 'provider' to the comment provider you want to use.
